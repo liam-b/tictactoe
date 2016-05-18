@@ -8,9 +8,6 @@ function testForWin () {
   else if (testForDraw()) {
     return GREY;
   }
-  else {
-    return false;
-  }
 }
 
 function wonVertical (color) {

@@ -25,21 +25,23 @@ for (x = 0; x < 3; x++) {
   squareX = squareX + OFFSET;
   for (y = 0; y < 3; y++) {
     squareY = squareY + OFFSET;
-    board[x][y] = { color : GREY, x : squareX, y : squareY }
+    board[x][y] = { color : GREY, x : squareX, y : squareY, grade : 0 }
   }
   squareY = CENTER_Y - OFFSET * 2;
 }
+
+board[0][0].color = RED;
+board[2][0].color = RED;
 
 var mouse = {
   x : 0,
   y : 0
 }
 
-console.log(board)
-
 function draw () {
   if (turn == 'ai') {
     aiMove();
+    console.log(board)
   }
   drawBoard();
   if (playing) {
