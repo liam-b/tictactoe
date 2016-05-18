@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="js/winTest.js"></script>
+    <script src="js/ai.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+    <title>Tic Tac Toe</title>
+  </head>
+
+  <body>
+    <div id="canvas">
+      <h1 id="title">Tic Tac Toe</h1>
+      <canvas id="myCanvas" width="1024" height="748"></canvas>
+      <script src="js/game.js"></script>
+    </div>
+    
+    <br>
+    
+    <div class="center">
+      <h2 class="heading">Building a tic tac toe Ai</h2>
+      <p>Tic tac toe is a fairly simple game. With a maximum of 9 possible moves at any point in the game constructing an Ai isn’t incredibly hard, but it still has its implications.</p>
+      <p>I decided to use a html canvas and draw onto it using javascript to simulate the game board. I also built the Ai in js but later I might move to python for machine learning.</p>
+      <h3>Setting up the game board</h3>
+      <p>First things first, building a game board.</p>
+      <p>For this I created a 3x3 two dimensional array in js and drew it onto a html canvas. Each square knows if its a O or a X and where it is on the board. To draw it onto the screen I wrote a little function that itterates over the table and draws a square for every location in the array as you can see below. At the moment its nothing special.</p>
+      <img src="img/basic-game-board.png">
+      <p>Here's a little snippet of the js I was using to draw that up. You can see it setting up some constants, then building the board. Underneath that is the main draw loop and the mouse click event listener.</p>
+      <img src="img/building-board-code.png">  
+      <h3>Click detection</h3>    
+      <p>Next thing was to let the player make their move on the board so I had to figure out a way to detect if a square was clicked. You can see below the mouseClick function is called anytime there is a click on screen and it returns co-ordinates of were the click was. Using this I ran a function that checks if the click was within a square on the board and repeated it nine times. One for each square.</p>
+      <img src="img/click-event.png">
+      <p>After I implemented the new click code the player can click on a board square and it will change from grey to blue.</p>
+      <img src="img/clicked-board.png">
+      <p>As you can see at the moment the clicks are represented by a change in the board square color but later I will make it a O or a X.</p>
+      <h3>Checking for a win</h3>
+      <p>The next challenge was to know when a player or Ai had won the game (getting 3 X's or O's in a row). This provde to be quite difficult as I needed to check up, down, left, right and diagonal. As you can see below it ended up being a large section of code.</p>
+      <img src="img/win-check-code.png">
+      <p>Because the main game.js file was getting pretty long at this point I decided to split it up into different files to clean up my work space.</p>
+      <h3>Creating a random Ai</h3>
+      <p>For testing the Ai I decided to make it pick a random square and color it red. Using this I could test the win checking and polish up the front end of the board. I had to implement turns into the game and a variable for weather the game was won or not. I wrote some code so the plyer and Ai would take turns and not overwite each others squares when they made a move. I also made it so the game would restart after someone had won.</p>
+      <img src="img/random-ai.png">
+      <p>And it worked! At this point most of the game was done and now it was on to the actual hard bit, the Ai itself</p>
+      <p>Before I got on to the Ai I went around in the code and neatened some things up and sorted out some of the functions that wern't working. I also added some text at the top top to say who had won the game or if it was a draw.</p>
+      <h2>Writing the Ai</h2>
+      <p>First I needed to decide what the Ai needed to do.</p>
+      <ul>
+        <li>Go through all current possible moves and grade them on their likelihood of winning (minimax).</li>
+        <li>Stop searching one their are no moves left.</li>
+        <li>Using the grading data, make the best possible move.</li>
+        <li>Remember for next time how deep to go into move tree.</li>
+        <li>Tell the plyer its their turn.</li>
+      </ul>
+      <><>
+    </div>
+  </body>
+
+</html>
