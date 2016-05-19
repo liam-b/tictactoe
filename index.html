@@ -22,9 +22,13 @@
     <div class="center">
       <h2 class="heading">Building a tic tac toe Ai</h2>
       <p>Tic tac toe is a fairly simple game. With a maximum of 9 possible moves at any point in the game constructing an Ai isn’t incredibly hard, but it still has its implications.</p>
-      <p>I decided to use a html canvas and draw onto it using javascript to simulate the game board. I also built the Ai in js but later I might move to python for machine learning.</p>
+      <h3>Getting a workspace up and running</h3>
+      <p>The very first thing to do was to set up an enviroment that I could build my entire game on. I decieded to go for a html canvas which ment setting up a website. This didn't take too long as I had made quite a few websites before and knew where I was going.</p>
+      <img src="img/work-enviroment.png">
+      <p>As you can see I set up some folder to sort all the different files I would be using through this project. Later I also added an image folder to keep them all grouped together and not all over the place.</p>
+      <p>Next thing to do was to get a basic website up so I quickly wrote some css and html. After that I moved onto using canvas to draw a game board.</p>
+      <img src="img/css.png">
       <h3>Setting up the game board</h3>
-      <p>First things first, building a game board.</p>
       <p>For this I created a 3x3 two dimensional array in js and drew it onto a html canvas. Each square knows if its a O or a X and where it is on the board. To draw it onto the screen I wrote a little function that itterates over the table and draws a square for every location in the array as you can see below. At the moment its nothing special.</p>
       <img src="img/basic-game-board.png">
       <p>Here's a little snippet of the js I was using to draw that up. You can see it setting up some constants, then building the board. Underneath that is the main draw loop and the mouse click event listener.</p>
