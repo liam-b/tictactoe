@@ -83,6 +83,7 @@ function reset () {
   for (y = 0; y < 3; y++) {
     for (x = 0; x < 3; x++) {
       board[y][x].color = GREY;
+      board[y][x].grade = 0;
     }
   }
   clear();

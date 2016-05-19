@@ -30,7 +30,7 @@ for (x = 0; x < 3; x++) {
   squareY = CENTER_Y - OFFSET * 2;
 }
 
-board[0][0].color = RED;
+board[0][2].color = RED;
 board[2][0].color = RED;
 
 var mouse = {
@@ -39,9 +39,8 @@ var mouse = {
 }
 
 function draw () {
-  if (turn == 'ai') {
+  if (turn == 'ai' && testForWin() != GREY) {
     aiMove();
-    console.log(board)
   }
   drawBoard();
   if (playing) {
