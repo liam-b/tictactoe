@@ -1,6 +1,8 @@
 function aiMove () {
-  minimax();
-  playBestMove();
+  if (testForWin() == false) {
+    minimax();
+    playBestMove();
+  }
 }
 
 function emptySquares () {
@@ -36,19 +38,14 @@ function minimax () {
   for (a = 0; a < 3; a++) {
     for (b = 0; b < 3; b++) {
       if (board[a][b].color == GREY) {
-        if (lastMove == RED) {
-          board[a][b].color = BLUE;
-          if (testForWin() == BLUE) {
-            board[a][b].grade += -1;
-          }
+        board[a][b].color = RED;
+        if (testForWin() == RED) {
+          board[a][b].grade += 1;
         }
-        else {
-          board[a][b].color = RED;
-          if (testForWin() == RED) {
-            board[a][b].grade += 1;
-          }
-        }
-        board[a][b].color = GREY;
+      board[a][b].color = GREY;
+      }
+      else {
+        board[a][b].grade = -10;
       }
     }
   }

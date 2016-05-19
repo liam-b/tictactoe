@@ -30,9 +30,6 @@ for (x = 0; x < 3; x++) {
   squareY = CENTER_Y - OFFSET * 2;
 }
 
-board[0][2].color = RED;
-board[2][0].color = RED;
-
 var mouse = {
   x : 0,
   y : 0
