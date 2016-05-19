@@ -66,6 +66,17 @@ p {
   padding-right: 350px;
 }
 
+h4 {
+  color: #999;
+  text-align: left;
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: lighter;
+  padding: 10px;
+  padding-left: 350px;
+  padding-right: 350px;
+}
+
 li {
   color: #999;
   text-align: left;
