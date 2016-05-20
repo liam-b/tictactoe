@@ -15,6 +15,7 @@ CENTER_Y = canvas.height / 2;
 turn = 'player';
 playing = true;
 move = 0;
+lastMove = BLUE;
 
 var squareX = CENTER_X - OFFSET * 2;
 var squareY = CENTER_Y - OFFSET * 2;
