@@ -1,5 +1,3 @@
-lastMove = 'BLUE'
-
 function aiMove () {
   if (testForWin() == false) {
     minimax();
@@ -44,6 +42,8 @@ function minimax () {
           board[a][b].color = RED;
           if (testForWin() == RED) {
             board[a][b].grade += 1;
+          }
+          else {
             lastMove = RED;
             minimax();
           }
@@ -55,6 +55,8 @@ function minimax () {
           board[a][b].color = BLUE;
           if (testForWin() == BLUE) {
             board[a][b].grade += -1;
+          }
+          else {
             lastMove = BLUE;
             minimax();
           }
@@ -75,6 +77,7 @@ function playBestMove () {
     }
   }
   console.log(bestMove);
+  console.log(board);
   board[bestMove[0]][bestMove[1]].color = RED;
   turn = 'player';
 }
