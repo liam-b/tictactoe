@@ -1,8 +1,8 @@
 function aiMove () {
-  if (testForWin() == false) {
     minimax();
     playBestMove();
-  }
+    turn = 'player';
+    move++;
 }
 
 function emptySquares () {
@@ -79,5 +79,4 @@ function playBestMove () {
   console.log(bestMove);
   console.log(board);
   board[bestMove[0]][bestMove[1]].color = RED;
-  turn = 'player';
 }
