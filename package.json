@@ -1,6 +1,7 @@
 {
   "jspm": {
     "dependencies": {
+      "fingerprintjs2": "npm:fingerprintjs2@^1.4.0",
       "immutable": "npm:immutable@^3.8.1"
     },
     "devDependencies": {
