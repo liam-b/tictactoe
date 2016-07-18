@@ -12,6 +12,34 @@ System.config({
     "npm:*": "jspm_packages/npm/*",
     "github:*": "jspm_packages/github/*"
   },
+  bundles: {
+    "build.js": [
+      "lib/main.js",
+      "lib/online.js",
+      "npm:babel-runtime@5.8.38/core-js/object/keys.js",
+      "npm:core-js@1.2.6/library/fn/object/keys.js",
+      "npm:core-js@1.2.6/library/modules/$.core.js",
+      "npm:core-js@1.2.6/library/modules/es6.object.keys.js",
+      "npm:core-js@1.2.6/library/modules/$.object-sap.js",
+      "npm:core-js@1.2.6/library/modules/$.fails.js",
+      "npm:core-js@1.2.6/library/modules/$.export.js",
+      "npm:core-js@1.2.6/library/modules/$.ctx.js",
+      "npm:core-js@1.2.6/library/modules/$.a-function.js",
+      "npm:core-js@1.2.6/library/modules/$.global.js",
+      "npm:core-js@1.2.6/library/modules/$.to-object.js",
+      "npm:core-js@1.2.6/library/modules/$.defined.js",
+      "npm:babel-runtime@5.8.38/helpers/class-call-check.js",
+      "npm:babel-runtime@5.8.38/helpers/create-class.js",
+      "npm:babel-runtime@5.8.38/core-js/object/define-property.js",
+      "npm:core-js@1.2.6/library/fn/object/define-property.js",
+      "npm:core-js@1.2.6/library/modules/$.js",
+      "lib/player.js",
+      "lib/game.js",
+      "lib/ai.js",
+      "lib/tester.js",
+      "lib/board.js"
+    ]
+  },
 
   map: {
     "babel": "npm:babel-core@5.8.38",
