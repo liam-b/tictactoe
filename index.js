@@ -1141,7 +1141,6 @@ $__System.register('1', ['2', '5', '6', '7', '8', '18'], function (_export) {
         y: 0
       };
       online = new Online('offline', 'null');
-      // firebase for second slot
       board = new Board(3, 3);
       tester = new Tester(board);
       game = new Game(tester);
