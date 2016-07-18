@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='stylesheet' type='text/css' href='css/styles.css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,300italic,400italic,600italic' rel='stylesheet' type='text/css'>
+    <link rel='icon' href='img/icon.png'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js" />
+    <script src='https://www.gstatic.com/firebasejs/3.1.0/firebase.js'></script>
+    <script src="build.js"></script>
+    <script>
+      var config = {
+        apiKey: 'AIzaSyBRJ5rii4morUyaMv_oCl_NeBoxVJ5Nz4Y',
+        authDomain: 'tictactoe-ai-d1047.firebaseapp.com',
+        databaseURL: 'https://tictactoe-ai-d1047.firebaseio.com',
+        storageBucket: '',
+      };
+
+      // firebase.initializeApp(config);
+    </script>
+
+    <title>Tic Tac Toe</title>
+  </head>
+
+  <body>
+    <div id='canvas'>
+      <h1 id='title'>Tic Tac Toe</h1>
+      <canvas id='myCanvas' width='1024' height='748'></canvas>
+      <script src='index.js'></script>
+    </div>
+
+    <br>
+
+    <div class='center'>
+      <p></p>
+      <h2 class='heading'>An Unbeatable tic tac toe Ai</h2>
+      <p>Tic tac toe is a fairly simple game. With a maximum of 9 possible moves at any point in the game constructing an Ai isn’t incredibly hard, but it still has its implications.</p>
+      <h3>The setup</h3>
+      <p>Most of the code for this game is to build the board, draw it and take user input. In the end only about 50 lines of code is needed for the perfect Ai. I used Babel to code in the latest version of javascript (es6) and went form there. I also opened a git repo <a href='https://github.com/liam-b/tictactoe'>here</a> to keep my code safe.</p>
+      <p>First things first, get jspm working (easier said than done)</p>
+      <p>After trying out <a href='https://webpack.github.io/'>Webpack</a> I moved onto <a href='http://jspm.io/'>Jspm</a>, another web server and found it more successful. So I npm installed a few libraries and got babel running (for es6 javascript) and started work on the game board.</p>
+      <h3>Game Board</h3>
+      <p>At the start of the game the board is initiated and it builds an array to draw from onto the canvas. It sets up colors and some dimensions constants then exports a Board class. It then draws the lines and sets up all the locations on screen. Once that finished it draws the board once and you can see an empty board on the screen.</p>
+      <img src='img/board-setup.png' width='959' height='600'>
+      <p>Here's what the canavs looks like.</p>
+      <img src='img/blank-board.png' width='959' height='600'>
+      <h3>Making A Move</h3>
+      <p>Next I allowed the player to make a move against an opponent that made random moves. The player clicks are read on an event function and are checked if they are in a valid location before being updated. The AI simply picks a random number form 0 - 9 and makes a move.</p>
+      <img src='img/random-ai-move.png' width='959' height='600'>
+      <h3>Checking for a win</h3>
+      <p>I then created a class to check for a win and stop the game if somebody won. It used a couple of function to check vertical, diagonal and horizontal. It then returned who had won and prevented both the player and AI from making moves.</p>
+      <img src='img/tester-code.png' width='959' height='600'>
+      <p>I also put together a game class to hold data like whose move it is, game state and other information so that it can all be bundled to be passed around more easily. The game class also holds the tester because it is quicker to call a whoWon() function directly from the game object.</p>
+      <img src='img/game-code.png' width='959' height='600'>
+      <p>At this point I was almost up to writing the AI but I just had to had a draw loop and some win condition code to handle a win from the player or AI. It constantly draws the board and tells the right player / AI if it is their turn and also checks the game object for a win. If someone has won, it stops the game and prints out who won.</p>
+      <img src='img/main-loop-code.png' width='959' height='600'>
+      <p>Next up, the AI</p>
+      <h2>Writing the AI</h2>
+      <p>For this I was going to use the <a href='https://en.wikipedia.org/wiki/Minimax'>Minimax Algorithm</a> which basically tries to make the best move for itself and force the opponent to make the worst move possible. It is the perfect algorithm for Tic Tac Toe.</p>
+      <p>Next I decided what I wanted the AI to do:</p>
+      <ul>
+        <li>Get given a game on its turn</li>
+        <li>Start the minimax loop</li>
+        <li>If the game state is terminal (somebody has won), return the score</li>
+        <li>Otherwise if its the AI's turn, loop through each available move</li>
+        <li>Use <a href='https://en.wikipedia.org/wiki/Recursion_(computer_science)'>recursion</a> to call itself passing in a new copy of the game and move</li>
+        <li>Return the best move it finds</li>
+        <li>If its not the AI's move, do the same thing but for the player (this time finding the worst move)</li>
+      </ul>
+      <p>In code it looks like so:</p>
+      <img src='img/minimax-code.png' width='959' height='600'>
+      <p>I wrapped up the ai into a class and exported it into the main loop so now in the game you play an un beatable AI.</p>
+      <img src='img/unbeatable-game.png' width='959' height='600'>
+      <p>Of course it was a little harder than just writing that up and being done. It took heaps of testing and many different approaches to finally come to a working copy. It also took alot of google-ing. But once it was all setup it worked perfectly except for a little flaw.</p>
+      <p>The flaw is that if the AI knows that it has already won, I doesn't always take the most direct route. For instance in this senario, it know that it can't loose and so doesn't care it win now or later.</p>
+      <img src='img/winning-1.png' width='959' height='600'>
+      <p>As you can see from these moves, the AI is only one move away from victory and the next move looks obvious, but I doesn't do what you expect.</p>
+      <img src='img/winning-2.png' width='959' height='600'>
+      <p>Now it knows it can't loose and makes what looks like a dumb move but really, its already won.</p>
+      <img src='img/winning-3.png' width='959' height='600'>
+      <h3>It's Done, Right?</h3>
+      <p>Well, not quite. Just for fun I decided to add a few different levels of AIs that slowly get better as you win against them. I wrote the functions, added a AI level display and added it into the win condition to go to the next level of AI.</p>
+      <img src='img/other-ai.png' width='959' height='600'>
+      <p>And there, it's done and dusted. In fact, you can play the game up the top of this webpage!</p>
+      <footer>Liam Brennan S2Z 2016, <a href='https://github.com/liam-b/tictactoe'>Git repo</a></footer>
+    </div>
+  </body>
+
+</html>
